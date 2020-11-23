@@ -27,7 +27,7 @@ class ItemsController < ApplicationController
   private
 
   def set_item
-    @item = Item.fing([:id])
+    @item = Item.find([:id])
   end
 
   def item_params
