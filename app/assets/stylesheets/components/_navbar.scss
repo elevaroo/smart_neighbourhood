@@ -1,12 +1,15 @@
-.navbar-lewagon {
+.navbar-smartneb {
   justify-content: space-between;
   background: white;
+box-shadow: 0 2px 2px -2px rgba(0,0,0,.9);
 }
 
-.navbar-lewagon .navbar-collapse {
+.navbar-smartneb  .navbar-collapse {
   flex-grow: 0;
 }
 
-.navbar-lewagon .navbar-brand img {
+.navbar-smartneb  .navbar-brand img {
   width: 40px;
 }
+
+
