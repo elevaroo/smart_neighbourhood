@@ -1,0 +1,19 @@
+<div class="container">
+  <h1>Discover out items</h1>
+  <h2>What you can rent in your SmartNeighbourhood</h2>
+
+  <div class="d-flex flex-wrap">
+    <% @items.each do |item| %>
+      <div class="card">
+        <h3><%= item.name %></h3>
+        <p><%= item.location %></p>
+        <div class="d-flex">
+          <p><i class="fas fa-euro-sign"></i></i><%= item.price %></p>
+        </div>
+        <%= link_to 'more info', item_path(item) %>
+      </div>
+    <% end %>
+
+  </div>
+
+</div>
