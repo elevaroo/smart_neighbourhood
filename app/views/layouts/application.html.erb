@@ -13,8 +13,15 @@
 
   <body>
     <!-- has to be below navbar -->
-    <p class=“notice”><%= notice %></p>
-    <p class=“alert”><%= alert %></p>
+    <%= render 'shared/flashes' %>
+    <% if user_signed_in?  %>
+    <!-- put navbar that displays user data and sign out button -->
+    <%= link_to "Sign out", destroy_user_session_path, class:"" %>
+    <% else %>
+    <!-- put navbar that has log in and sign up button -->
+    <%= link_to "Log in", new_user_session_path, class:"" %>
+    <%= link_to "Sign up", new_user_registration_path, class:"" %>
+    <% end %>
     <%= yield %>
   </body>
 </html>
