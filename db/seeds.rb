@@ -28,4 +28,5 @@ end
   )
 end
 
+p users
 p items
