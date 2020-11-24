@@ -12,12 +12,6 @@
    <body class= home-bg>
       <!-- has to be below navbar -->
       <%= render 'shared/flashes' %>
-      <% if user_signed_in?  %>
-      <!-- put navbar that displays user data and sign out button -->
-      <%= link_to "Sign out", destroy_user_session_path, class:"" %>
-      <% else %>
-      <!-- put navbar that has log in and sign up button -->
-      <% end %>
       <div class="navbar navbar-expand-sm navbar-light navbar-smartneb">
          <a class="navbar-brand" href="#">
          <img src="https://raw.githubusercontent.com/lewagon/fullstack-images/master/uikit/logo.png" />
@@ -37,7 +31,8 @@
                <li class="nav-item dropdown">
                   <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                     <%= link_to "Sign out", destroy_user_session_path, method: :delete, class:"dropdown-item border-top" %>
+                     <%= link_to "Sign out", destroy_user_session_path, class:"dropdown-item" %>
+
                      <a class="dropdown-item" target="_blank" href="https://media0.giphy.com/media/w6VY9ka8YDk9ac0Y3T/200.webp?cid=ecf05e47tv7eowgssg0ugsbxmnptbs9wp0eugjxl91s4jm21&rid=200.webp"> Help </a>
                   </div>
                </li>
