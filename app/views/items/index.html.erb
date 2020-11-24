@@ -5,7 +5,11 @@
   <div class="d-flex flex-wrap">
     <% @items.each do |item| %>
       <div class="card-item">
-        <img src=<%"imageURL"%>/>
+          <% if item.photo.attached? %>
+            <%= cl_image_tag item.photo.key, crop: :fill %>
+          <% else %>
+            <img src='https://source.unsplash.com/800x450/?<%= item.name %>' alt='<%= item.name %>' >
+          <% end %>
         <div class="card-item-infos">
           <h2><%= item.name %></h2>
           <h1><%= item.location %></h1>
