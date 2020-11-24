@@ -8,9 +8,9 @@
   <!-- Name of user who has requested item -->
   <p>Neighbor: <%= request.user.first_name %></p>
   <!-- Start date -->
-  <p>From: <%= request.start_date %></p>
+  <p>From: <%= request.date_start %></p>
   <!-- end date -->
-  <p>Till: <%= request.end_date %></p>
+  <p>Till: <%= request.date_end %></p>
   <!-- item name -->
   <p>Item: <%= request.item.name %></p>
   <!-- item description -->
@@ -34,11 +34,11 @@
 <% if current_user.bookings_as_owner %>
   <% current_user.bookings_as_owner.each do |request| %>
     <!-- insert card for currently rented out items here -->
-    <% if request.status == confirmed && request.start_date.past? && request.end_date.future? %>
+    <% if request.status == confirmed && request.date_start.past? && request.date_end.future? %>
       <!-- Name of user who has requested item -->
       <p>Neighbor: <%= request.user.first_name %></p>
       <!-- end date -->
-      <p>Time till return: <%= request.end_date - Date.today%></p>
+      <p>Time till return: <%= request.date_end - Date.today%></p>
       <!-- item name -->
       <p>Item: <%= request.item.name %></p>
       <!-- item description -->
@@ -54,7 +54,7 @@
 
 <% current_user.bookings.each do |booking| %>
 <p>Owner: <%=booking.item.user%></p>
-<p>From: <%=booking.start_date%></p>
-<p>Till: <%=booking.end_date%></p>
+<p>From: <%=booking.date_start%></p>
+<p>Till: <%=booking.date_end%></p>
 <p>Status: <%=booking.status%></p>
 <% end %>
