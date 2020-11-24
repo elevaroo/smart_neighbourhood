@@ -29,8 +29,10 @@
                   <a class="nav-link" style="color:#777777; href="#"><i class="far fa-comment-dots"></i></a>
                </li>
                <li class="nav-item dropdown">
-                  <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://kitt.lewagon.com/placeholder/users/ssaunier" />
+                  <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cioday.com/wp-content/uploads/2018/11/avatar-placeholder.png" />
                   <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+                     <%= link_to "My Account", account_path, class:"dropdown-item" %>
+                     <%= link_to "Dashboard", dashboard_path, class:"dropdown-item" %>
                      <%= link_to "Sign out", destroy_user_session_path, class:"dropdown-item" %>
 
                      <a class="dropdown-item" target="_blank" href="https://media0.giphy.com/media/w6VY9ka8YDk9ac0Y3T/200.webp?cid=ecf05e47tv7eowgssg0ugsbxmnptbs9wp0eugjxl91s4jm21&rid=200.webp"> Help </a>
