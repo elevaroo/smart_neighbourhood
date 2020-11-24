@@ -5,9 +5,14 @@
   <div class="d-flex flex-wrap">
     <% @items.each do |item| %>
 
-
       <div class="card-item">
-          <img src=<%"imageURL"%>/>
+          <%= link_to item_path(item), style: 'text-decoration: none' do%>
+            <% if item.photo.attached? %>
+              <%= cl_image_tag item.photo.key, crop: :fill %>
+            <% else %>
+              <img src='https://source.unsplash.com/800x450/?<%= item.name %>' alt='<%= item.name %>' >
+            <% end %>
+          <% end %>
 
             <div class="d-flex justify-content-between my-2 mx-2">
               <h2><%= item.name %></h2>
@@ -18,7 +23,6 @@
               <h1><%= item.location %></h1>
               <%= link_to 'more info', item_path(item), class:"link-info"%>
             </div>
-
       </div>
 
     <% end %>
