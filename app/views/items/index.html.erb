@@ -5,10 +5,12 @@
   <div class="d-flex flex-wrap">
     <% @items.each do |item| %>
       <div class="card-item">
-          <% if item.photo.attached? %>
-            <%= cl_image_tag item.photo.key, crop: :fill %>
-          <% else %>
-            <img src='https://source.unsplash.com/800x450/?<%= item.name %>' alt='<%= item.name %>' >
+          <%= link_to item_path(item), style: 'text-decoration: none' do%>
+            <% if item.photo.attached? %>
+              <%= cl_image_tag item.photo.key, crop: :fill %>
+            <% else %>
+              <img src='https://source.unsplash.com/800x450/?<%= item.name %>' alt='<%= item.name %>' >
+            <% end %>
           <% end %>
         <div class="card-item-infos">
           <h2><%= item.name %></h2>
