@@ -5,3 +5,27 @@
   background-size: cover;
 }
 
+.flexbox {
+  display: flex;
+  justify-content: space-between;
+}
+
+#garage-img{
+  flex-grow: 1;
+  width: 80%;
+  padding: 10px;
+
+}
+
+.container {
+  padding:10px;
+}
+
+h2 .card{
+  font-size:12px
+}
+
+.content-card {
+  font-family: fantasy;
+}
+
