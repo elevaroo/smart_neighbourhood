@@ -6,20 +6,21 @@ class ItemsController < ApplicationController
   end
 
   def show
+
   end
 
   def new
-    # @item = Item.new
+    @item = Item.new
   end
 
   def create
-    # @item = Item.new(item_params)
-    # @item.save
-    # if @item.save
-    #   redirect_to item_path(@item)
-    # else
-    #   render :new
-    # end
+    @item = Item.new(item_params)
+    @item.user = current_user
+    if @item.save
+      redirect_to item_path(@item)
+    else
+      render :new
+    end
   end
 
   def update
@@ -33,7 +34,7 @@ class ItemsController < ApplicationController
   private
 
   def set_item
-    @item = Item.find([:id])
+    @item = Item.find(params[:id])
   end
 
   def item_params
