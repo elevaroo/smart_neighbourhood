@@ -7,24 +7,29 @@ class ItemsController < ApplicationController
   end
 
   def show
+    @booking = Booking.new
   end
 
   def new
-    # @item = Item.new
+    @item = Item.new
   end
 
   def create
-    # @item = Item.new(item_params)
-    # @item.save
-    # if @item.save
-    #   redirect_to item_path(@item)
-    # else
-    #   render :new
-    # end
+    @item = Item.new(item_params)
+    @item.user = current_user
+    if @item.save
+      redirect_to item_path(@item)
+    else
+      render :new
+    end
+  end
+
+  def edit
   end
 
   def update
-
+    @item.update(item_params)
+    redirect_to item_path(@item)
   end
 
   def delete
