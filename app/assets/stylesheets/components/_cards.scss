@@ -26,6 +26,14 @@
   margin: 0;
 }
 
+.card-item .card-item-infos {
+  padding: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
+
 .card-item.card-dashboard {
   position: absolute;
   right: 16px;
