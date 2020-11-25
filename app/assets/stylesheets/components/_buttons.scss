@@ -12,3 +12,52 @@
 .btn-login:hover {
   opacity: 1;
 }
+
+.accept-btn {
+  position: absolute;
+  right: 55px;
+  top: 10px;
+  width: 40px;
+  transition: all .2s ease-in-out;
+  a {
+    color: green;
+    font-size: 30px;
+  }
+}
+
+.accept-btn:hover {
+  transform: scale(1.2);
+}
+
+.decline-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  width: 40px;
+  transition: all .2s ease-in-out;
+  a {
+    color: red;
+    font-size: 30px;
+  }
+}
+
+.decline-btn:hover {
+  transform: scale(1.2);
+}
+
+.confirmed-btn {
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  width: 40px;
+  color: white;
+  padding: 8px 24px;
+  border-radius: 4px;
+  font-weight: bold;
+  background: linear-gradient(#1DA107, #177D05);
+  transition: background 0.3s ease;
+  border: 1px solid #0E5102;
+}
+
+
+
