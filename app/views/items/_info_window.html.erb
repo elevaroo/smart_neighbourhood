@@ -1,9 +1,9 @@
 
-<div class="mapboxgl-popup mapboxgl-popup-content">
-  <%= link_to item_path(item), style: 'text-decoration: none' do%>
-    <h3><%= item.name %></h3>
-    <div class="d-flex justify-content-between">
-      <p><%= item.location %></p>
+<div class="">
+  <%= link_to item_path(item), style: 'text-decoration: none;' do%>
+    <h4><%= item.name.capitalize %></h4>
+    <div style="font-size: 18px;">
+      <p><i class="far fa-map"></i> <%= item.location %></p>
       <p>€<%= item.price %></p>
     </div>
   <% end %>
