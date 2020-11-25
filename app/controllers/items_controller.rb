@@ -1,9 +1,18 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_item, only: [:show, :edit, :update, :delete]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all
+
+     # the `geocoded` scope filters only items with coordinates (latitude & longitude)
+    @markers = @items.geocoded.map do |item|
+      {
+        lat: item.latitude,
+        lng: item.longitude,
+        infoWindow: render_to_string(partial: "info_window", locals: { item: item })
+      }
+    end
   end
 
   def show
@@ -32,8 +41,9 @@ class ItemsController < ApplicationController
     redirect_to item_path(@item)
   end
 
-  def delete
-
+  def destroy
+    @item.destroy
+    redirect_to dashboard_path
   end
 
   private
