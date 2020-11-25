@@ -4,6 +4,14 @@ class ItemsController < ApplicationController
 
   def index
     @items = Item.all
+
+     # the `geocoded` scope filters only items with coordinates (latitude & longitude)
+    @markers = @items.geocoded.map do |item|
+      {
+        lat: item.latitude,
+        lng: item.longitude
+      }
+    end
   end
 
   def show
