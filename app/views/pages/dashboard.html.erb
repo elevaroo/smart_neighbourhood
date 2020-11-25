@@ -1,62 +1,102 @@
 <!--  -->
-<h1>Welcome <%= current_user.first_name %></h1>
+<div class="d-flex flex-wrap flex-column">
+  <div class="p-2">
+    <h1>Welcome <%= current_user.first_name %></h1>
+  </div>
+  <div class="p-2 d-flex flex-column">
+    <div class="p-2">
+      <h2>Your requests</h2>
+    </div>
+    <div class="p-2 d-flex flex-wrap justify-content-around align-items-center">
+      <% current_user.bookings_as_owner.each do |request| %>
+      <div class="p-2 card-booking">
+        <% if request.item.photo.attached? %>
+        <%= cl_image_tag request.item.photo.key %>
+        <% else %>
+        <img src='https://source.unsplash.com/800x450/?<%= request.item.name %>' alt='<%= request.item.name %>' >
+        <% end %>
 
-<h2>Your requests</h2>
+        <div class="d-flex justify-content-between align-items-center p-2">
+          <div class="d-flex flex-column justify-content-between p-2">
+            <h1>Item: <%= request.item.name %></h1>
+            <!-- Name of user who has requested item -->
+            <h2>Neighbor: <%= request.user.first_name %></h2>
+          </div>
 
-<% current_user.bookings_as_owner.each do |request| %>
-  <!-- insert card for current requests here -->
-  <!-- Name of user who has requested item -->
-  <p>Neighbor: <%= request.user.first_name %></p>
-  <!-- Start date -->
-  <p>From: <%= request.date_start %></p>
-  <!-- end date -->
-  <p>Till: <%= request.date_end %></p>
-  <!-- item name -->
-  <p>Item: <%= request.item.name %></p>
-  <!-- item description -->
-  <p>Description: <%= request.item.description %></p>
-  <%= link_to accept_path(request) do%><i class="fas fa-check"></i><% end %>
-  <%= link_to decline_path(request) do%><i class="fas fa-ban"></i><% end %>
-<% end %>
+          <!-- Start date -->
+          <h3>From: <%= request.date_start %></h3>
+          <!-- end date -->
+          <h3>Till: <%= request.date_end %></h3>
+        </div>
+        <div class="d-flex accept-btn p-2">
+          <%= link_to accept_path(request) do%><i class="fas fa-check"></i><% end %>
+        </div>
+        <div class="d-flex decline-btn p-2">
+          <%= link_to decline_path(request) do%><i class="fas fa-ban"></i><% end %>
+        </div>
+        <!-- add else statement to display confirmed button-->
+      </div>
+      <% end %>
+    </div>
+  </div>
 
-<h2>Your items</h2>
-
-<% current_user.items.each do |item| %>
-  <!-- insert card for items here -->
-  <!-- item name -->
-  <p>Item: <%= item.name %></p>
-  <!-- item description -->
-  <p>Description: <%= item.description %></p>
-  <!-- item price -->
-  <p><%= item.price %></p>
-<% end %>
-
-<h2>Items currently out in the neighborhood</h2>
-
-<% if current_user.bookings_as_owner %>
-  <% current_user.bookings_as_owner.each do |request| %>
-    <!-- insert card for currently rented out items here -->
-    <% if request.status == confirmed && request.date_start.past? && request.date_end.future? %>
-      <!-- Name of user who has requested item -->
-      <p>Neighbor: <%= request.user.first_name %></p>
-      <!-- end date -->
-      <p>Time till return: <%= request.date_end - Date.today%></p>
-      <!-- item name -->
-      <p>Item: <%= request.item.name %></p>
-      <!-- item description -->
-      <p>>Description: <%= request.item.description %></p>
-    <% end %>
-  <% end %>
-<% else %>
-  <p>None of your items are currently out in the neighborhood</p>
-<% end %>
-
-
-<h2>Your bookings</h2>
-
-<% current_user.bookings.each do |booking| %>
-<p>Owner: <%=booking.item.user%></p>
-<p>From: <%=booking.date_start%></p>
-<p>Till: <%=booking.date_end%></p>
-<p>Status: <%=booking.status%></p>
-<% end %>
+  <div class="p-2 d-flex flex-column">
+    <div class="p-2">
+      <h2>Your items</h2>
+    </div>
+    <div class="p-2 d-flex">
+      <div class="p-2">
+        <% current_user.items.each do |item| %>
+        <!-- insert card for items here -->
+        <!-- item name -->
+        <p>Item: <%= item.name %></p>
+        <!-- item description -->
+        <p>Description: <%= item.description %></p>
+        <!-- item price -->
+        <p><%= item.price %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="p-2 d-flex flex-column">
+    <div class="p-2">
+      <h2>Items currently out in the neighborhood</h2>
+    </div>
+    <div class="p-2 d-flex">
+      <div class="p-2">
+        <% if current_user.bookings_as_owner %>
+        <% current_user.bookings_as_owner.each do |request| %>
+        <!-- insert card for currently rented out items here -->
+        <% if request.status == 1 && request.date_start.past? && request.date_end.future? %>
+        <!-- Name of user who has requested item -->
+        <p>Neighbor: <%= request.user.first_name %></p>
+        <!-- end date -->
+        <p>Time till return: <%= request.date_end - Date.today%></p>
+        <!-- item name -->
+        <p>Item: <%= request.item.name %></p>
+        <!-- item description -->
+        <p>>Description: <%= request.item.description %></p>
+        <% end %>
+        <% end %>
+        <% else %>
+        <p>None of your items are currently out in the neighborhood</p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="p-2 d-flex flex-column">
+    <div class="p-2">
+      <h2>Your bookings</h2>
+    </div>
+    <div class="p-2 d-flex">
+      <div class="p-2">
+        <% current_user.bookings.each do |booking| %>
+        <p>Owner: <%=booking.item.user.first_name%></p>
+        <p>From: <%=booking.date_start%></p>
+        <p>Till: <%=booking.date_end%></p>
+        <p>Status: <%=booking.status%></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

@@ -29,7 +29,8 @@ class BookingsController < ApplicationController
 
   def accept
     @booking = Booking.find(params[:id])
-    @booking.status = confirmed
+    #1 = confirmed see enum in booking model
+    @booking.status = 1
     if @booking.save!
       redirect_to dashboard_path
     else
@@ -39,7 +40,8 @@ class BookingsController < ApplicationController
 
   def decline
     @booking = Booking.find(params[:id])
-    @booking.status = declined
+    #2 = declined see enum in booking model
+    @booking.status = 2
     if @booking.save!
       redirect_to dashboard_path
     else
