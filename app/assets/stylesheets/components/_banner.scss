@@ -1,15 +1,17 @@
 .banner {
   background-size: cover;
   background-position: center;
-  padding: 150px 10px;
+  background-image: url("././Background-banner.png");
+  padding: 103px 10px;
 }
 
 .banner h1 {
-  margin: 0;
   color: white;
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
+  margin: 138px -56px;
+  font-family: 'Montserrat', sans-serif;
 }
 
 .banner p {
@@ -31,4 +33,14 @@
   color: #fff;
   line-height: 1.5;
   padding-bottom: 100px;
+  font-family: 'Montserrat', sans-serif;
+}
+
+.flexbox .banner {
+  flex-direction: row;
+
+}
+
+#banner-typed-text {
+  font-size: 30px;
 }
