@@ -6,10 +6,11 @@
       <h1 class="banner-content"=>Don't buy what your neighbour can lend you!</h1>
     </div>
     <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-90">
-      <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get">
+        <input name="utf8" type="hidden" value="&#x2713;" />
         <div class="search-form-control form-group">
-          <button name="button" type="submit" class="btn btn-flat search-btn">  <span id="banner-typed-text"></span>
-            <i class="fas fa-search"></i>
+          <button name="button" type="submit" class="btn btn-flat search-btn">
+            <i class="fas fa-search" id="icon"></i>
           </button>
           <input class="form-control string required" type="text" name="search[query]" id="search_query" />
         </div>
@@ -17,6 +18,10 @@
     </form>
   </div>
   <p></p>
+</div>
+
+<div class="typed-text">
+  <span id="banner-typed-text"></span>
 </div>
 
 <div class="container">
