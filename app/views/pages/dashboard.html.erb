@@ -52,7 +52,7 @@
     </div>
     <div class="d-flex flex-wrap">
       <% current_user.items.each do |item| %>
-      <div class="card-item">
+      <div class="card-item" id="relative">
         <%= link_to item_path(item), style: 'text-decoration: none' do%>
         <% if item.photo.attached? %>
         <%= cl_image_tag item.photo.key, crop: :fill %>
@@ -69,6 +69,10 @@
         <div class="d-flex justify-content-between mb-2 mx-2">
           <h1><%= item.location %></h1>
           <%= link_to 'Edit', edit_item_path(item), class:"link-info"%>
+        </div>
+
+        <div class="delete-btn">
+          <%= link_to item_path(item), method: :delete do %><i class="fas fa-trash"></i><% end %>
         </div>
       </div>
       <% end %>
