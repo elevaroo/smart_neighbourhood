@@ -1,0 +1,11 @@
+
+<div class="mapboxgl-popup mapboxgl-popup-content">
+  <%= link_to item_path(item), style: 'text-decoration: none' do%>
+    <h3><%= item.name %></h3>
+    <div class="d-flex justify-content-between">
+      <p><%= item.location %></p>
+      <p>€<%= item.price %></p>
+    </div>
+  <% end %>
+</div>
+

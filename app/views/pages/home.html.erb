@@ -1,15 +1,55 @@
-<div class="banner" style="background-image: linear-gradient(rgba(0,0,0,0.4),rgba(0,0,0,0.4)), url('https://i.ibb.co/MSgc22n/Screenshot-2020-11-23-at-12-03-51.png');">
-  <h1 class="banner-content">Don't buy what your neighbour can lend you!</h1>
-  <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
-    <div class="search-form-control form-group">
-    <input class="form-control string required" type="text" name="search[query]" id="search_query" />
-    <button name="button" type="submit" class="btn btn-flat">Which object do you need?
-      <i class="fas fa-search"></i>
-    </button>
+
+
+<div class="banner">
+  <div class="d-flex flex-column">
+    <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 .pt-3 flex-item">
+      <h1 class="banner-content"=>Don't buy what your neighbour can lend you!</h1>
+    </div>
+    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 pt-90">
+      <form novalidate="novalidate" class="simple_form search" action="/" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+        <div class="search-form-control form-group">
+          <button name="button" type="submit" class="btn btn-flat search-btn">  <span id="banner-typed-text"></span>
+            <i class="fas fa-search"></i>
+          </button>
+          <input class="form-control string required" type="text" name="search[query]" id="search_query" />
+        </div>
+      </div>
+    </form>
   </div>
- </form>
   <p></p>
 </div>
+
 <div class="container">
-<%= render "shared/card-content1" %>
+  <%= render "shared/card-content1" %>
+</div>
+
+<div class="container">
+  <h2>Our latest items</h2>
+  <div class="d-flex flex-wrap">
+      <% @items.each do |item| %>
+
+        <div class="card-item">
+            <%= link_to item_path(item), style: 'text-decoration: none' do%>
+              <% if item.photo.attached? %>
+                <%= cl_image_tag item.photo.key, crop: :fill %>
+              <% else %>
+                <img src='https://source.unsplash.com/800x450/?<%= item.name %>' alt='<%= item.name %>' >
+              <% end %>
+            <% end %>
+
+              <div class="d-flex justify-content-between my-2 mx-2">
+                <h2><%= item.name %></h2>
+                <h2><%= item.price %>€ per day</h2>
+              </div>
+
+              <div class="d-flex justify-content-between mb-2 mx-2">
+                <h1><%= item.location %></h1>
+                <%= link_to 'more info', item_path(item), class:"link-info"%>
+              </div>
+        </div>
+
+      <% end %>
+      </div>
+   <%= link_to 'discover objects nearby' , '/items', class: 'btn btn-primary' %>
+  </div>
 </div>

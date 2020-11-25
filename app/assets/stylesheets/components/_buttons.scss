@@ -50,9 +50,10 @@
   position: absolute;
   right: 15px;
   top: 10px;
-  width: 40px;
+  width: 120px;
   color: white;
-  padding: 8px 24px;
+  text-align: center;
+  padding: 8px 8px;
   border-radius: 4px;
   font-weight: bold;
   background: linear-gradient(#1DA107, #177D05);
@@ -61,4 +62,24 @@
 }
 
 
+.btn:hover {
+  opacity:1;
+  box-shadow: 2px 2px #888888;
+  font-weight: bold;
+}
 
+#relative {
+  position: relative!important;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 30px;
+  bottom: 5px;
+  width: 40px;
+  transition: all .2s ease-in-out;
+  a {
+    color: grey;
+    font-size: 20px;
+  }
+}
