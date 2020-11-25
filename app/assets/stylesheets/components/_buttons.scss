@@ -13,6 +13,7 @@
   opacity: 1;
 }
 
+
 .accept-btn {
   position: absolute;
   right: 55px;
@@ -67,3 +68,18 @@
   font-weight: bold;
 }
 
+#relative {
+  position: relative!important;
+}
+
+.delete-btn {
+  position: absolute;
+  right: 30px;
+  bottom: 5px;
+  width: 40px;
+  transition: all .2s ease-in-out;
+  a {
+    color: grey;
+    font-size: 20px;
+  }
+}

@@ -1,6 +1,6 @@
 class ItemsController < ApplicationController
   skip_before_action :authenticate_user!, only: :index
-  before_action :set_item, only: [:show, :edit, :update, :delete]
+  before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
     @items = Item.all
@@ -41,8 +41,9 @@ class ItemsController < ApplicationController
     redirect_to item_path(@item)
   end
 
-  def delete
-
+  def destroy
+    @item.destroy
+    redirect_to dashboard_path
   end
 
   private

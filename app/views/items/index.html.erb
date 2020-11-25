@@ -1,12 +1,12 @@
-<div class="container">
-  <h1>Discover our items</h1>
-  <h2>What you can rent in your SmartNeighbourhood</h2>
+<div class="container mb-6">
+  <h1>Discover our smart items anywhere</h1>
 
-  <div id="map"
+  <div class="mb-6" id="map"
      style="width: 100%; height: 400px;"
      data-markers="<%= @markers.to_json %>"
      data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
 
+  <h2>What you can rent in your SmartNeighbourhood</h2>
   <div class="d-flex flex-wrap">
     <% @items.each do |item| %>
 
