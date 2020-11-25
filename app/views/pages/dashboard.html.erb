@@ -9,6 +9,7 @@
     </div>
     <div class="p-2 d-flex flex-wrap">
       <% current_user.bookings_as_owner.each do |request| %>
+      <% unless request.declined? %>
       <div class="p-2 card-booking">
         <% if request.item.photo.attached? %>
         <%= cl_image_tag request.item.photo.key %>
@@ -39,6 +40,7 @@
         <div class="confirmed-btn">
           <h1>CONFIRMED</h1>
         </div>
+        <% end %>
         <% end %>
         <!-- add else statement to display confirmed button-->
       </div>
