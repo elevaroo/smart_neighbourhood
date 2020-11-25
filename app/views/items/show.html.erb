@@ -1,26 +1,42 @@
 <div class="container">
   <h1> <%= @item.name %></h1>
 
-  <!-- here we should showcase some images of the item -->
-  <% if @item.photo.attached? %>
-    <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill %>
-  <% else %>
-    <img src='https://source.unsplash.com/800x450/?<%= @item.name %>' alt='<%= @item.name %>' >
-  <% end %>
+ <div class="row">
 
-  <p><%= @item.description %></p>
-  <p><%= @item.price %> € per Day</p>
-  <p><%= @item.location %></p>
+    <div class="col-12 col-lg-8">
+      <% if @item.photo.attached? %>
+      <%= cl_image_tag @item.photo.key, height: 300, width: 400, crop: :fill %>
+      <% else %>
+      <img src='https://source.unsplash.com/800x450/?<%= @item.name %>' alt="<%= @item.name %>" style="width: 100%; height: auto; object-fit:cover" >
+    <% end %>
+    </div>
 
+    <div class="col-12 col-lg-4">
+      <h2 class="text-xl-center mt-20"><%= @item.location %></p>
+      <h3 class="text-xl-center mt-20"><%= @item.price %> € per Day</p>
+    </div>
 
-<div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+</div>
+ <div class="row mt-5">
 
-    <%= simple_form_for [@item, @booking] do |f| %>
+    <div class="col-12 col-lg-6">
+     <p class="decription"><%= @item.description %></p>
+
+    </div>
+
+    <div class="col-12 col-lg-6">
+      <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+
+      <%= simple_form_for [@item, @booking] do |f| %>
       <%= f.input :date_start, as: :string, required: false, input_html: {class: "datepicker"} %>
       <%= f.input :date_end, as: :string, required: false, input_html: {class: "datepicker"} %>
       <%= f.button :submit, "Book", class: "btn btn-success" %>
     <% end %>
 </div>
+    </div>
 
-  <%= link_to 'Edit the item', edit_item_path%>
-  <%= link_to 'Back', items_path %>
+
+  <p class="mx-2"><%= link_to 'Edit the item', edit_item_path%></p>
+  <p class="mx-9"><%= link_to ' Back', items_path %></p>
+
+</div>
