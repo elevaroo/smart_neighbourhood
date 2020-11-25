@@ -49,7 +49,47 @@
 }
 
 
+.card-booking {
+  overflow: hidden;
+  background: white;
+  box-shadow: 0 0 15px rgba(0.06,0.06,0.06,0.06);
+  width: 30vw;
+  margin: 10px;
+  border-radius: 10px;
+  position: relative;
+}
 
+.card-booking img {
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+}
+
+.card-booking h2 {
+  font-size: 14px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.card-booking h3 {
+  font-size: 16px;
+  margin: 0;
+}
+
+.card-booking h1 {
+  font-size: 18px;
+  font-weight: bold;
+  margin: 0;
+}
+
+
+.card-booking .card-booking-infos {
+  padding: 1px;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  position: relative;
+}
 
 // background-color: #C4C4C4;
 // width: 100%;
