@@ -94,7 +94,7 @@
               <h1>Neighbor: <%= request.user.first_name %></h1>
               <h2>Item: <%= request.item.name %></h2>
             </div>
-            <p>Time till return: <%= request.date_end - Date.today%></p>
+            <h3> <%= request.user.first_name %> will return your <%= request.item.name %> in <strong><%= (request.date_end - Date.today).to_i %> days</strong></h3>
           </div>
         <% end %>
         </div>
