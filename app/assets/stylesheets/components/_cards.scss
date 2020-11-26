@@ -1,10 +1,11 @@
 .card-item {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0.06,0.06,0.06,0.06);
   width: 30%;
   margin: 10px;
-  border-radius: 10px;
+  border-radius: 0px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
 }
 
 .card-item img {
@@ -24,7 +25,13 @@
   font-weight: bold;
   opacity: .8;
   margin: 0;
+
 }
+
+.card-item:hover {
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
 
 .card-item .card-item-infos {
   padding: 1px;
@@ -43,13 +50,13 @@
 
  // <img src="URL" class="card-item.card-dashboard" />
 
-.card-booking {
+ .card-booking {
   overflow: hidden;
   background: white;
   box-shadow: 0 0 15px rgba(0.06,0.06,0.06,0.06);
   width: 30vw;
   margin: 10px;
-  border-radius: 10px;
+  border-radius: 0px;
   position: relative;
 }
 
@@ -78,10 +85,19 @@
 
 
 .card {
-  box-shadow: 0 10px 20px rgba(0,0,0,0.19), 0 6px 6px rgba(0,0,0,0.23);
-  background-color: rgba(0, 0, 0, 0.09);
+
+  background-color: white;
+  margin:10px;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 }
 
+.card-border{
+  border: 2px solid white;
+  outline: 5px solid white;
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  transition: 0.3s;
+  background-color: white;
+}
 .card-booking .card-booking-infos {
   padding: 1px;
   display: flex;

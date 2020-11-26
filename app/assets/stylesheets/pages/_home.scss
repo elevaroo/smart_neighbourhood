@@ -1,8 +1,7 @@
 // Specific CSS for your home-page
 
 .home-bg {
-  background-image : url('https://images.unsplash.com/photo-1516541196182-6bdb0516ed27?ixlib=rb-1.2.1&ixid=MXwxMjA3fDB8MHxzZWFyY2h8MXx8d2hpdGV8ZW58MHx8MHw%3D&auto=format&fit=crop&w=800&q=60');
-  background-size: cover;
+  background-color :#FBF7F0
 }
 
 .flexbox {
@@ -14,6 +13,7 @@
   flex-grow: 1;
   width: 80%;
   padding: 10px;
+  shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
 
 }
 
@@ -21,12 +21,8 @@
   padding:10px;
 }
 
-h2 .card{
-  font-size:12px;
-  font-family: 'Montserrat', sans-serif;
-}
-
-.content-card {
-  font-family: 'Montserrat', sans-serif;
+.navbar-parent {
+  justify-content: space-between;
+  display:flex;
 }
 
