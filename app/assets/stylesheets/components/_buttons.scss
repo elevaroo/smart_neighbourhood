@@ -42,6 +42,7 @@
   top: 10px;
   width: 40px;
   transition: all .2s ease-in-out;
+
   a {
     color: red;
     font-size: 30px;
@@ -67,6 +68,11 @@
   border: 1px solid #0E5102;
 }
 
+.btn-smartneb {
+  background-color:#BFDBA6;
+  font-color:white;
+}
+
 
 .btn:hover {
   opacity:1;
@@ -90,11 +96,9 @@
   }
 }
 
-
 .edit-btn {
   position: absolute;
   right: 59px;
   bottom: 3px;
   width: 40px;
   transition: all .2s ease-in-out;
-}
