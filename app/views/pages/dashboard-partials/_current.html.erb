@@ -3,8 +3,8 @@
     <% current_user.bookings_as_owner.each do |request| %>
       <% if request.confirmed? && request.date_start.past? && request.date_end.future? %>
         <div class="p-2 card-booking">
-          <% if request.item.photo.attached? %>
-            <%= cl_image_tag request.item.photo.key %>
+          <% if request.item.photos.attached? %>
+            <%= cl_image_tag request.item.photos.first.key %>
           <% else %>
             <img src='https://source.unsplash.com/800x450/?<%= request.item.name %>' alt='<%= request.item.name %>' >
           <% end %>
