@@ -17,6 +17,14 @@ class ItemsController < ApplicationController
 
   def show
     @booking = Booking.new
+
+    if @item.geocoded?
+
+      @markers = {
+        lat: @item.latitude,
+        lng: @item.longitude
+      }
+    end
   end
 
   def new

@@ -1,21 +1,19 @@
 import mapboxgl from 'mapbox-gl';
 
-const initMapbox = () => {
-  const mapElement = document.getElementById('map');
-
-const fitMapToMarkers = (map, markers) => {
-  const bounds = new mapboxgl.LngLatBounds();
-  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
-  map.fitBounds(bounds, { padding: 70, maxZoom: 15, duration: 0 });
+const buildMap = (mapElement) => {
+  mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
+  return new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/elevaroo/ckhxi09ie0upa19qrzjylvj3h'
+  });
 };
 
-  if (mapElement) { // only build a map if there's a div#map to inject into
-    mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
-    const map = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/elevaroo/ckhxi09ie0upa19qrzjylvj3h'
-    });
-    const markers = JSON.parse(mapElement.dataset.markers);
+const addMarkersToMap = (map, markers) => {
+  if (markers.length === undefined) {
+    new mapboxgl.Marker()
+      .setLngLat([ markers.lng, markers.lat ])
+      .addTo(map);
+    } else {
     markers.forEach((marker) => {
       const popup = new mapboxgl.Popup().setHTML(marker.infoWindow);
       new mapboxgl.Marker()
@@ -23,7 +21,29 @@ const fitMapToMarkers = (map, markers) => {
         .setPopup(popup)
         .addTo(map);
     });
-    fitMapToMarkers(map, markers)
+  }
+};
+
+const fitMapToMarkers = (map, markers) => {
+  if (markers.length === undefined) {
+      const bounds = new mapboxgl.LngLatBounds();
+      bounds.extend([ markers.lng, markers.lat ]);
+      map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+
+  } else {
+  const bounds = new mapboxgl.LngLatBounds();
+  markers.forEach(marker => bounds.extend([ marker.lng, marker.lat ]));
+  map.fitBounds(bounds, { padding: 70, maxZoom: 15 });
+};
+};
+
+const initMapbox = () => {
+  const mapElement = document.getElementById('map');
+  if (mapElement) {
+    const map = buildMap(mapElement);
+    const markers = JSON.parse(mapElement.dataset.markers);
+    addMarkersToMap(map, markers);
+    fitMapToMarkers(map, markers);
   }
 };
 
