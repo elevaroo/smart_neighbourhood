@@ -3,7 +3,12 @@ class ItemsController < ApplicationController
   before_action :set_item, only: [:show, :edit, :update, :destroy]
 
   def index
-    @items = Item.all
+
+    if params[:query].present?
+      @items = Item.search_by_name_description_and_location(params[:query])
+    else
+      @items = Item.all
+    end
 
      # the `geocoded` scope filters only items with coordinates (latitude & longitude)
     @markers = @items.geocoded.map do |item|
@@ -17,6 +22,14 @@ class ItemsController < ApplicationController
 
   def show
     @booking = Booking.new
+
+    if @item.geocoded?
+
+      @markers = {
+        lat: @item.latitude,
+        lng: @item.longitude
+      }
+    end
   end
 
   def new
@@ -53,7 +66,7 @@ class ItemsController < ApplicationController
   end
 
   def item_params
-    params.require(:item).permit(:name, :description, :price, :location, :photo)
+    params.require(:item).permit(:name, :description, :price, :location, photos: [])
   end
 
 
