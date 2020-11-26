@@ -1,12 +1,18 @@
-.login-button {
+.action-button {
 
-  color: #4A4A4A;
-  border: 1px solid #4A4A4A;
+  background-color: #a8dda8;
+  color: white;
   padding: 8px 24px;
-  border-radius: 50px;
-  font-weight: lighter;
-  opacity: 0.6;
+  border: none;
+  border-radius: 25px;
+  opacity: 0.8;
   transition: opacity 0.3s ease;
+}
+
+.action-button:hover {
+  opacity:1;
+  box-shadow: 1px 1px #888888;
+  font-weight: bold;
 }
 
 .btn-login:hover {
