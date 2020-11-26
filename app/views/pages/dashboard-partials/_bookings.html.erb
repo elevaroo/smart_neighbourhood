@@ -1,0 +1,21 @@
+<div class="p-2 d-flex flex-wrap">
+  <% current_user.bookings.each do |booking| %>
+  <div class="p-2 card-booking">
+    <% if booking.item.photo.attached? %>
+    <%= cl_image_tag booking.item.photo.key %>
+    <% else %>
+    <img src='https://source.unsplash.com/800x450/?<%= booking.item.name %>' alt='<%= booking.item.name %>' >
+    <% end %>
+
+    <div class="d-flex justify-content-between align-items-center p-2">
+      <div class="d-flex flex-column justify-content-between p-2">
+        <h1> <%=booking.item.user.first_name%>'s <%= booking.item.name %></h1>
+        <h2>Status: <%=booking.status%></h2>
+      </div>
+
+      <h3>From: <%=booking.date_start%></h3>
+      <h3>Till: <%=booking.date_end%></h3>
+    </div>
+  </div>
+  <% end %>
+</div>

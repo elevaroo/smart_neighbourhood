@@ -1,0 +1,34 @@
+<div class="d-flex flex-wrap">
+  <% current_user.items.each do |item| %>
+  <div class="card-item" id="relative">
+    <%= link_to item_path(item), style: 'text-decoration: none' do%>
+    <% if item.photo.attached? %>
+    <%= cl_image_tag item.photo.key, crop: :fill %>
+    <% else %>
+    <img src='https://source.unsplash.com/800x450/?<%= item.name %>' alt='<%= item.name %>' >
+    <% end %>
+    <% end %>
+
+    <div class="d-flex justify-content-start card-item-name px-2 pt-2">
+      <h2><%= item.name %></h2>
+      <h3><i class="fas fa-map-marker-alt"></i> <%= item.location %></h3>
+    </div>
+
+    <div class="px-2 card-item-description m-0">
+      <p><%= item.description %></p>
+    </div>
+
+    <div class="d-flex justify-content-start align-items-baseline px-2 card-item-price">
+      <h2><%= item.price %>€ </h2>
+      <h3 id="day">  / day</h3>
+    </div>
+
+    <div class="edit-btn">
+      <%= link_to 'Edit', edit_item_path(item), class:"link-info"%>
+    </div>
+    <div class="delete-btn">
+      <%= link_to item_path(item), method: :delete do %><i class="fas fa-trash"></i><% end %>
+    </div>
+  </div>
+  <% end %>
+</div>

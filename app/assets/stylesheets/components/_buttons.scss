@@ -80,12 +80,21 @@
 
 .delete-btn {
   position: absolute;
-  right: 30px;
-  bottom: 5px;
+  right: 10px;
+  bottom: 3px;
   width: 40px;
   transition: all .2s ease-in-out;
   a {
     color: grey;
     font-size: 20px;
   }
+}
+
+
+.edit-btn {
+  position: absolute;
+  right: 59px;
+  bottom: 3px;
+  width: 40px;
+  transition: all .2s ease-in-out;
 }

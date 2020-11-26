@@ -1,8 +1,8 @@
 .card-item {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0.06,0.06,0.06,0.06);
-  width: 30%;
+  box-shadow: 0 2 4px rgba(0,0,0,0.18);
+  width: 30vw;
   margin: 10px;
   border-radius: 10px;
 }
@@ -34,6 +34,44 @@
   position: relative;
 }
 
+.card-item-name {
+  h2 {
+    font-weight: bold;
+    font-size: 20px;
+    padding-left: 5px;
+    padding-right: 5px;
+    padding-top: 5px;
+  }
+  h3 {
+    color: grey;
+    font-size: 14px;
+    padding: 10px;
+  }
+}
+
+#day {
+  font-size: 12px;
+  font-weight: 500px;
+  margin: 2px;
+}
+
+.card-item-description {
+  p {
+    font-size: 14px;
+    padding: 5px;
+    margin: 0;
+  }
+}
+
+.card-item-price {
+  position: absolute;
+  right: 26px;
+  bottom: 47px;
+  h2 {
+    font-size: 20px;
+  }
+}
+
 .card-item.card-dashboard {
   position: absolute;
   right: 16px;
@@ -46,9 +84,8 @@
 .card-booking {
   overflow: hidden;
   background: white;
-  box-shadow: 0 0 15px rgba(0.06,0.06,0.06,0.06);
-  width: 30vw;
-  margin: 10px;
+  box-shadow: 0 2 4px rgba(0,0,0,0.18);
+  width: 20vw;
   border-radius: 10px;
   position: relative;
 }
@@ -60,13 +97,14 @@
 }
 
 .card-booking h2 {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-booking h3 {
   font-size: 16px;
+  font-weight: lighter;
   margin: 0;
 }
 
@@ -86,7 +124,44 @@
   padding: 1px;
   display: flex;
   justify-content: space-between;
-  align-items: flex-end;
-  position: relative;
+  align-items: center;
 }
 
+.card-avatar {
+  position: absolute;
+  top: 168px;
+  left: 30px;
+  vertical-align: middle;
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  border: 4px solid white;
+  overflow: hidden;
+}
+
+.card-booking-neighbor {
+  position: absolute;
+  top: 217px;
+  left: 117px;
+}
+
+.current-requests {
+  h3 {
+    font-size: 18px;
+    font-weight: lighter;
+    padding: 5px;
+  }
+}
+
+.nav-pills .nav-link.active, .nav-pills .show > .nav-link {
+    color: #fff;
+    background-color: #BFDBA6;
+}
+
+.nav-link {
+  color: #BFDBA6;
+}
+
+.nav-link:hover {
+  color: black;
+}
