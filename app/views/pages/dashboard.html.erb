@@ -3,137 +3,32 @@
   <div class="p-2">
     <h1>Welcome <%= current_user.first_name.capitalize %></h1>
   </div>
-  <div class="p-2 d-flex flex-column">
-    <div class="p-2">
-      <h2>Your requests</h2>
+  <ul class="nav nav-pills mb-3" id="pills-tab" role="tablist">
+    <li class="nav-item">
+      <a class="nav-link active" id="pills-home-tab" data-toggle="pill" href="#pills-home" role="tab" aria-controls="pills-home" aria-selected="true">Your Requests</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-profile-tab" data-toggle="pill" href="#pills-profile" role="tab" aria-controls="pills-profile" aria-selected="false">Your Bookings</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Your Items</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" id="pills-current-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-contact" aria-selected="false">Items currently out in the neighbourhood</a>
+    </li>
+  </ul>
+  <div class="tab-content" id="pills-tabContent">
+    <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
+      <%= render "pages/dashboard-partials/requests" %>
     </div>
-    <div class="p-2 d-flex flex-wrap">
-      <% current_user.bookings_as_owner.each do |request| %>
-      <% unless request.declined? %>
-      <div class="p-2 card-booking">
-        <% if request.item.photo.attached? %>
-        <%= cl_image_tag request.item.photo.key %>
-        <% else %>
-        <img src='https://source.unsplash.com/800x450/?<%= request.item.name %>' alt='<%= request.item.name %>' >
-        <% end %>
-
-        <div class="d-flex justify-content-between align-items-center p-2">
-          <div class="d-flex flex-column justify-content-between p-2">
-            <h1>Item: <%= request.item.name %></h1>
-            <!-- Name of user who has requested item -->
-            <h2>Neighbor: <%= request.user.first_name %></h2>
-          </div>
-
-          <!-- Start date -->
-          <h3>From: <%= request.date_start %></h3>
-          <!-- end date -->
-          <h3>Till: <%= request.date_end %></h3>
-        </div>
-        <% if request.pending?  %>
-        <div class="d-flex accept-btn p-2">
-          <%= link_to accept_path(request) do%><i class="fas fa-check"></i><% end %>
-        </div>
-        <div class="d-flex decline-btn p-2">
-          <%= link_to decline_path(request) do%><i class="fas fa-ban"></i><% end %>
-        </div>
-        <% elsif request.confirmed? %>
-        <div class="confirmed-btn">
-          <h1>CONFIRMED</h1>
-        </div>
-        <% end %>
-        <% end %>
-        <!-- add else statement to display confirmed button-->
-      </div>
-      <% end %>
+    <div class="tab-pane fade" id="pills-profile" role="tabpanel" aria-labelledby="pills-profile-tab">
+      <%= render "pages/dashboard-partials/bookings" %>
     </div>
-  </div>
-
-  <div class="p-2 d-flex flex-column">
-    <div class="p-2">
-      <h2>Your items</h2>
+    <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
+      <%= render "pages/dashboard-partials/items" %>
     </div>
-    <div class="d-flex flex-wrap">
-      <% current_user.items.each do |item| %>
-      <div class="card-item" id="relative">
-        <%= link_to item_path(item), style: 'text-decoration: none' do%>
-        <% if item.photos.attached? %>
-        <%= cl_image_tag item.photos.first.key, crop: :fill %>
-        <% else %>
-        <img src='https://source.unsplash.com/800x450/?<%= item.name %>' alt='<%= item.name %>' >
-        <% end %>
-        <% end %>
-
-        <div class="d-flex justify-content-between my-2 mx-2">
-          <h2><%= item.name %></h2>
-          <h2><%= item.price %>€ per day</h2>
-        </div>
-
-        <div class="d-flex justify-content-between mb-2 mx-2">
-          <h1><%= item.location %></h1>
-          <%= link_to 'Edit', edit_item_path(item), class:"link-info"%>
-        </div>
-
-        <div class="delete-btn">
-          <%= link_to item_path(item), method: :delete do %><i class="fas fa-trash"></i><% end %>
-        </div>
-      </div>
-      <% end %>
-    </div>
-  </div>
-  <div class="p-2 d-flex flex-column">
-    <div class="p-2">
-      <h2>Items currently out in the neighborhood</h2>
-    </div>
-    <% if current_user.bookings_as_owner.count > 0 %>
-      <div class="p-2 d-flex flex-wrap">
-      <% current_user.bookings_as_owner.each do |request| %>
-        <% if request.confirmed? && request.date_start.past? && request.date_end.future? %>
-        <div class="p-2 card-booking">
-          <% if request.item.photo.attached? %>
-          <%= cl_image_tag request.item.photo.key %>
-          <% else %>
-          <img src='https://source.unsplash.com/800x450/?<%= request.item.name %>' alt='<%= request.item.name %>' >
-          <% end %>
-        <!-- Name of user who has requested item -->
-          <div class="d-flex justify-content-between align-items-center p-2">
-            <div class="d-flex flex-column justify-content-between p-2">
-              <h1>Neighbor: <%= request.user.first_name %></h1>
-              <h2>Item: <%= request.item.name %></h2>
-            </div>
-            <h3> <%= request.user.first_name %> will return your <%= request.item.name %> in <strong><%= (request.date_end - Date.today).to_i %> days</strong></h3>
-          </div>
-        <% end %>
-        </div>
-      <% end %>
-      </div>
-    <% else %>
-        <h2>None of your items are currently out in the neighborhood</h2>
-    <% end %>
-  </div>
-  <div class="p-2 d-flex flex-column flex-wrap">
-    <div class="p-2">
-      <h2>Your bookings</h2>
-    </div>
-    <div class="p-2 d-flex flex-wrap">
-      <% current_user.bookings.each do |booking| %>
-      <div class="p-2 card-booking">
-        <% if booking.item.photo.attached? %>
-        <%= cl_image_tag booking.item.photo.key %>
-        <% else %>
-        <img src='https://source.unsplash.com/800x450/?<%= booking.item.name %>' alt='<%= booking.item.name %>' >
-        <% end %>
-
-        <div class="d-flex justify-content-between align-items-center p-2">
-          <div class="d-flex flex-column justify-content-between p-2">
-            <h1> <%=booking.item.user.first_name%>'s <%= booking.item.name %></h1>
-            <h2>Status: <%=booking.status%></h2>
-          </div>
-
-          <h3>From: <%=booking.date_start%></h3>
-          <h3>Till: <%=booking.date_end%></h3>
-        </div>
-      </div>
-      <% end %>
+    <div class="tab-pane fade" id="pills-current" role="tabpanel" aria-labelledby="pills-current-tab">
+      <%= render "pages/dashboard-partials/current" %>
     </div>
   </div>
 </div>
