@@ -1,8 +1,8 @@
 <div class="p-2 d-flex flex-wrap">
   <% current_user.bookings.each do |booking| %>
   <div class="p-2 card-booking">
-    <% if booking.item.photo.attached? %>
-    <%= cl_image_tag booking.item.photo.key %>
+    <% if booking.item.photos.attached? %>
+    <%= cl_image_tag booking.item.photos.first.key %>
     <% else %>
     <img src='https://source.unsplash.com/800x450/?<%= booking.item.name %>' alt='<%= booking.item.name %>' >
     <% end %>
