@@ -1,47 +1,71 @@
-<div class="navbar navbar-expand-sm navbar-light navbar-smartneb">
-        <%= link_to root_path do %>
-          <%= image_tag "logo_transparent.png", alt: "SmartNeighbour", class:"navbar-brand"%>
-        <% end %>
-         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-         <span class="navbar-toggler-icon"></span>
-         </button>
-         <% if user_signed_in? %>
-         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-               <li class="nav-item active">
-                  <a class="nav-link" style="color:#777777; href="#"><i class="fas fa-bell"></i></a>
-               </li>
-               <li class="nav-item">
-                  <a class="nav-link" style="color:#777777; href="#"><i class="far fa-comment-dots"></i></a>
-               </li>
-               <li class="nav-item dropdown">
-                  <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src=
+<div class="navbar navbar-expand-sm navbar-light navbar-smartneb nav">
+
+
+ <!-- --- -->
+
+  <div class="navbar-left">
+    <%= link_to root_path do %>
+    <%= image_tag "logo_transparent.png", alt: "SmartNeighbour", size:"90x36" %>
+    <% end %>
+ <div class="collapse navbar-collapse pl-3" id="navbarSupportedContent ">
+  <ul class="navbar-nav mr-auto">
+    <li class="nav-item active">
+      <a class="nav-link" href="/">Home</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/items">Borrow</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="/items/new">Lend</a>
+    </li>
+    <li class="nav-item">
+      <a class="nav-link" href="#">Contact</a>
+    </li>
+  </ul>
+</div>
+</div>
+
+<div class="navbar-right">
+<% if user_signed_in? %>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+   <li class="nav-item active">
+    <a class="nav-link" style="color:#777777; href="#"><i class="fas fa-bell"></i></a>
+  </li>
+  <li class="nav-item">
+    <a class="nav-link" style="color:#777777; href="#"><i class="far fa-comment-dots"></i></a>
+  </li>
+  <li class="nav-item dropdown">
+    <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src=
                     <% if current_user.photo.attached? %>
                       <%= cl_image_path current_user.photo.key %>
                     <% else %>
                       'https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png'
                     <% end %> />
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                     <%= link_to "My Account", account_path, class:"dropdown-item" %>
-                     <%= link_to "Dashboard", dashboard_path, class:"dropdown-item" %>
-                     <%= link_to "Sign out", destroy_user_session_path, method:"delete", class:"dropdown-item" %>
-                     <a class="dropdown-item" target="_blank" href="https://media0.giphy.com/media/w6VY9ka8YDk9ac0Y3T/200.webp?cid=ecf05e47tv7eowgssg0ugsbxmnptbs9wp0eugjxl91s4jm21&rid=200.webp"> Help </a>
-                  </div>
-               </li>
-            </ul>
-         </div>
-         <% else %>
-          <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-               <li class="nav-item dropdown">
-                  <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cioday.com/wp-content/uploads/2018/11/avatar-placeholder.png" />
-                  <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
-                     <%= link_to "Log in", new_user_session_path, class:"dropdown-item" %>
-                     <%= link_to "Sign up", new_user_registration_path, class:"dropdown-item" %>
-                     <a class="dropdown-item" target="_blank" href="https://media0.giphy.com/media/w6VY9ka8YDk9ac0Y3T/200.webp?cid=ecf05e47tv7eowgssg0ugsbxmnptbs9wp0eugjxl91s4jm21&rid=200.webp"> Help </a>
-                  </div>
-               </li>
-            </ul>
-         </div>
-         <% end %>
-      </div>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+       <%= link_to "My Account", account_path, class:"dropdown-item" %>
+       <%= link_to "Dashboard", dashboard_path, class:"dropdown-item" %>
+       <%= link_to "Sign out", destroy_user_session_path, method:"delete", class:"dropdown-item" %>
+       <a class="dropdown-item" target="_blank" href="https://media0.giphy.com/media/w6VY9ka8YDk9ac0Y3T/200.webp?cid=ecf05e47tv7eowgssg0ugsbxmnptbs9wp0eugjxl91s4jm21&rid=200.webp"> Help </a>
+     </div>
+   </li>
+ </ul>
+</div>
+<% else %>
+<div class="collapse navbar-collapse" id="navbarSupportedContent">
+  <ul class="navbar-nav mr-auto">
+   <li class="nav-item dropdown">
+    <a class="nav-link" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"> Login <a/>
+      <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
+       <%= link_to "Log in", new_user_session_path, class:"dropdown-item" %>
+       <%= link_to "Sign up", new_user_registration_path, class:"dropdown-item" %>
+       <a class="dropdown-item" target="_blank" href="https://media0.giphy.com/media/w6VY9ka8YDk9ac0Y3T/200.webp?cid=ecf05e47tv7eowgssg0ugsbxmnptbs9wp0eugjxl91s4jm21&rid=200.webp"> Help </a>
+     </div>
+   </li>
+ </ul>
+</div>
+<% end %>
+</div>
+</div>
+
+
