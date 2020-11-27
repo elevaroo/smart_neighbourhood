@@ -4,7 +4,7 @@ const buildMap = (mapElement) => {
   mapboxgl.accessToken = mapElement.dataset.mapboxApiKey;
   return new mapboxgl.Map({
     container: 'map',
-    style: 'mapbox://styles/marv97/ckhz2wyes1b5w19pu35do5lt4'
+    style: 'mapbox://styles/ndashiz/cki047npy24zi19li7308rzck'
   });
 };
 
@@ -48,5 +48,6 @@ const initMapbox = () => {
     }
   }
 };
+
 
 export { initMapbox };
