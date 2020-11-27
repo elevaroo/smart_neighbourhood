@@ -14,7 +14,7 @@
   width: 80%;
   padding: 10px;
   shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-
+  object-fit: cover;
 }
 
 .container {
@@ -40,8 +40,13 @@ div.item {
     display: block;
 }
 
-.home-pad{
-padding:15px;
+.home-pad {
+  padding-top: 7px;
+  padding-bottom: 7px;
+  a {
+    padding-top: 7px;
+    padding-bottom: 7px;
+  }
 }
 
 h6.home-pad {
