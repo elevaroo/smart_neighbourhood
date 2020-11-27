@@ -12,10 +12,14 @@ class BookingsController < ApplicationController
     @booking = Booking.new(booking_params)
     @booking.user_id = current_user.id
     @booking.item_id = params[:item_id]
-    if @booking.save!
-      redirect_to dashboard_path
-    else
-      #display alert
+    respond_to do |format|
+      if @booking.save!
+        format.html{ redirect_to dashboard_path }
+        format.js
+      else
+        #display alert
+        format.html{render "items/show"}
+      end
     end
   end
 
