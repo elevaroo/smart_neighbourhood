@@ -1,4 +1,4 @@
-<div class="d-flex flex-wrap">
+<div class="d-flex flex-wrap justify-content-flex-start">
   <% current_user.items.each do |item| %>
   <div class="card-item" id="relative">
     <%= link_to item_path(item), style: 'text-decoration: none' do%>
@@ -24,7 +24,7 @@
     </div>
 
     <div class="edit-btn">
-      <%= link_to 'Edit', edit_item_path(item), class:"link-info"%>
+      <p><%= link_to 'Edit', edit_item_path(item), class:"link-cool"%></p>
     </div>
     <div class="delete-btn">
       <%= link_to item_path(item), method: :delete do %><i class="fas fa-trash"></i><% end %>
@@ -32,3 +32,53 @@
   </div>
   <% end %>
 </div>
+
+<br>
+<br>
+
+
+<h2 class="p-3">Items currently out in the neighborhood</h2>
+
+<% if current_user.bookings_as_owner.count > 0 %>
+  <div class="p-2 d-flex flex-wrap">
+    <% current_user.bookings_as_owner.each do |request| %>
+      <% if request.confirmed? && request.date_start.past? && request.date_end.future? %>
+        <div class="p-2 card-booking">
+          <% if request.item.photos.attached? %>
+            <%= cl_image_tag request.item.photos.first.key %>
+          <% else %>
+            <img src='https://source.unsplash.com/800x450/?<%= request.item.name %>' alt='<%= request.item.name %>' >
+          <% end %>
+          <div class="card-avatar">
+            <% if request.item.user.photo.attached? %>
+              <%= cl_image_tag request.item.user.photo.key %>
+            <% else %>
+              <img src='https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png' alt='Default Avatar' >
+            <% end %>
+          </div>
+          <div class="card-booking-neighbor">
+            <h2><%= request.user.first_name %></h2>
+          </div>
+          <br>
+          <br>
+          <br>
+          <div class="current-requests px-3">
+            <div class="d-flex pt-40 px-2">
+              <h3>Returning
+                <% if (request.date_end - Date.today).to_i == 1 %>
+                  tomorrow!
+                <% elsif (request.date_end - Date.today).to_i == 0 %>
+                  today!
+                <% else %>
+                  in <strong><%= (request.date_end - Date.today).to_i %> days</strong>
+                <% end %>
+              </h3>
+            </div>
+          </div>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+<% else %>
+  <p>None of your items are currently out in the neighborhood</p>
+<% end %>

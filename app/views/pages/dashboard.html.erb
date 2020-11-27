@@ -13,9 +13,6 @@
     <li class="nav-item">
       <a class="nav-link" id="pills-contact-tab" data-toggle="pill" href="#pills-contact" role="tab" aria-controls="pills-contact" aria-selected="false">Your Items</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" id="pills-current-tab" data-toggle="pill" href="#pills-current" role="tab" aria-controls="pills-contact" aria-selected="false">Items currently out in the neighbourhood</a>
-    </li>
   </ul>
   <div class="tab-content" id="pills-tabContent">
     <div class="tab-pane fade show active" id="pills-home" role="tabpanel" aria-labelledby="pills-home-tab">
@@ -26,9 +23,6 @@
     </div>
     <div class="tab-pane fade" id="pills-contact" role="tabpanel" aria-labelledby="pills-contact-tab">
       <%= render "pages/dashboard-partials/items" %>
-    </div>
-    <div class="tab-pane fade" id="pills-current" role="tabpanel" aria-labelledby="pills-current-tab">
-      <%= render "pages/dashboard-partials/current" %>
     </div>
   </div>
 </div>

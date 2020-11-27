@@ -1,5 +1,17 @@
 <h1>Your Account Details</h1>
 
-<p>Username: <%= current_user.email %></p>
-<p>Name: <%= current_user.first_name %>  <%= current_user.last_name %></p>
-<%= link_to "Change password", edit_user_registration_path, class:"btn btn-primary" %>
+
+<div class="p-2 d-flex">
+  <div class="p-2 d-flex flex-column">
+    <p class="p-2">Username: <strong><%= current_user.email %></strong></p>
+    <p class="p-2">Name: <strong><%= current_user.first_name %>  <%= current_user.last_name %></strong></p>
+    <%= link_to "Edit account", edit_user_registration_path, class:"btn btn-success" %>
+  </div>
+  <div class="p-2">
+    <% if current_user.photo.attached? %>
+    <%= cl_image_tag current_user.photo.key, class:"account-avatar", :gravity=>"faces" %>
+    <% else %>
+    <img src='https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png' alt='Default Avatar' class="account-avatar" >
+    <% end %>
+  </div>
+</div>
