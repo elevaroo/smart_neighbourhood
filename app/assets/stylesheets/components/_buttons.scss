@@ -7,8 +7,18 @@
   border-radius: 25px;
   opacity: 0.8;
   transition: opacity 0.3s ease;
+  &:focus {
+      border:none;
+      outline:none;
+    }
 }
 
+#home-page-btn {
+  position: absolute;
+  margin-left: 527px;
+  height: 3.5rem;
+  border-radius: 50px;
+}
 
 
 .action-button:hover {
