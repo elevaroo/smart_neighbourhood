@@ -1,3 +1,5 @@
+const sendButton = () => {
+
 document.querySelectorAll('.button').forEach(button => {
 
     let getVar = variable => getComputedStyle(button).getPropertyValue(variable);
@@ -62,23 +64,24 @@ document.querySelectorAll('.button').forEach(button => {
                     '--plane-y': -300,
                     '--plane-opacity': 0,
                     duration: .375,
-                    onComplete() {
-                        setTimeout(() => {
-                            button.removeAttribute('style');
-                            gsap.fromTo(button, {
-                                opacity: 0,
-                                y: -8
-                            }, {
-                                opacity: 1,
-                                y: 0,
-                                clearProps: true,
-                                duration: .3,
-                                onComplete() {
-                                    button.classList.remove('active');
-                                }
-                            })
-                        }, 1800)
-                    }
+                    // if error do this
+                    // onComplete() {
+                    //     setTimeout(() => {
+                    //         button.removeAttribute('style');
+                    //         gsap.fromTo(button, {
+                    //             opacity: 0,
+                    //             y: -8
+                    //         }, {
+                    //             opacity: 1,
+                    //             y: 0,
+                    //             clearProps: true,
+                    //             duration: .3,
+                    //             onComplete() {
+                    //                 button.classList.remove('active');
+                    //             }
+                    //         })
+                    //     }, 1800)
+                    // }
                 }]
             })
 
@@ -118,3 +121,6 @@ document.querySelectorAll('.button').forEach(button => {
     })
 
 });
+}
+
+export { sendButton };

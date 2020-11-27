@@ -27,7 +27,7 @@ import "bootstrap";
 import flatpickr from "flatpickr";
 import { initMapbox } from '../plugins/init_mapbox';
 import { loadDynamicBannerText } from '../components/search';
-import '../components/sendbutton';
+import { sendButton } from '../components/sendbutton';
 import '../components/links';
 //import { initAutocomplete } from '../plugins/init_autocomplete';
 // Internal imports, e.g:
@@ -36,6 +36,7 @@ import '../components/links';
 document.addEventListener('turbolinks:load', () => {
   // Call your functions here, e.g:
   // initSelect2();
+  sendButton();
   flatpickr(".datepicker", {});
   initMapbox();
   loadDynamicBannerText();
