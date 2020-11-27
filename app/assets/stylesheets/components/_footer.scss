@@ -1,12 +1,12 @@
 body {
-   display: flex;
-   min-height: 100vh!important;
-   flex-direction: column;
+ display: flex;
+ min-height: 100vh!important;
+ flex-direction: column;
 }
 
 .content {
-   flex: 1;
-   padding: 15px;
+ flex: 1;
+ padding: 15px;
 }
 
 .footer-distributed{
@@ -123,7 +123,7 @@ body {
   color:  #ffffff;
   font-size: 12px;
   font-weight: bold;
-  margin-bottom: 20px;
+  margin-bottom: 5px;
 }
 
 .footer-distributed .footer-icons{
@@ -138,7 +138,7 @@ body {
   background-color:  #33383b;
   border-radius: 2px;
 
-  font-size: 12px;
+  font-size: 10px;
   color: #ffffff;
   text-align: center;
   line-height: 35px;
@@ -176,12 +176,20 @@ body {
   font-size: 38pt;
   text-align: center;
   line-height: 550px;
-  }
-  .footer-links {
-    font-size: 12px;
-  }
+}
+.footer-links {
+  font-size: 12px;
+}
 
- .footer-company-about {
-    font-size:10px;
-  }
+.footer-company-about {
+  font-size:10px;
+}
 
+.footer-center {
+  padding-top:20px;
+}
+
+p.footer-company-name
+{
+  padding-top:60px
+}
