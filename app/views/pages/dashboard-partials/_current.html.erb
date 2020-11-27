@@ -9,7 +9,11 @@
             <img src='https://source.unsplash.com/800x450/?<%= request.item.name %>' alt='<%= request.item.name %>' >
           <% end %>
           <div class="card-avatar">
-            <img src='https://source.unsplash.com/800x450/?<%= request.item.name %>' alt='<%= request.item.name %>' >
+            <% if request.item.user.photo.attached? %>
+              <%= cl_image_tag request.item.user.photo.key %>
+            <% else %>
+              <img src='https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png' alt='Default Avatar' >
+            <% end %>
           </div>
           <div class="card-booking-neighbor">
             <h2><%= request.user.first_name %></h2>

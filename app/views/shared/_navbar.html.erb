@@ -36,7 +36,12 @@
     <a class="nav-link" href="#"><i class="far fa-comment-dots"></i></a>
   </li>
   <li class="nav-item dropdown">
-    <a class="nav-link text-white" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src="https://cioday.com/wp-content/uploads/2018/11/avatar-placeholder.png",> Login <a/>
+    <img class="avatar dropdown-toggle" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" src=
+                    <% if current_user.photo.attached? %>
+                      <%= cl_image_path current_user.photo.key %>
+                    <% else %>
+                      'https://www.pphfoundation.ca/wp-content/uploads/2018/05/default-avatar.png'
+                    <% end %> />
       <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
        <%= link_to "My Account", account_path, class:"dropdown-item" %>
        <%= link_to "Dashboard", dashboard_path, class:"dropdown-item" %>
@@ -62,4 +67,5 @@
 <% end %>
 </div>
 </div>
+
 
