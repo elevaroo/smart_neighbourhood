@@ -104,14 +104,14 @@
 }
 
 .card-booking h2 {
-  font-size: 20px;
+  font-size: 12px;
   font-weight: bold;
   margin: 0;
 }
 
 .card-booking h3 {
-  font-size: 16px;
-  font-weight: lighter;
+  font-size: 14px;
+  font-weight: bold;
   margin: 0;
 }
 
@@ -159,6 +159,9 @@
   position: absolute;
   top: 217px;
   left: 117px;
+  h2 {
+    font-size: 20px;
+  }
 }
 
 .current-requests {
@@ -180,4 +183,9 @@
 
 .nav-link:hover {
   color: black;
+}
+
+img.card-booking-avatar {
+  height: 80px;
+  width: 80px;
 }
