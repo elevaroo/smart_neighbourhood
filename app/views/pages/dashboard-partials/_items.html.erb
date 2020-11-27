@@ -16,10 +16,10 @@
 
     <div class="d-flex">
     <div class="px-2 card-item-description m-0">
-      <p><% if item.description.length < 90 %>
+      <p><% if item.description.length < 70 %>
         <%= item.description%>
         <% else %>
-        <%= item.description.slice(0, 90) + "..." %>
+        <%= item.description.slice(0, 70) + "..." %>
         <% end %>
       </p>
     </div>
