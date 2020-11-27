@@ -1,7 +1,7 @@
 
 <div class="container">
-  <h1> <%= @item.name %></h1>
-  <div class="row">
+  <h1> <%= @item.user.first_name.capitalize %>'s <%= @item.name.capitalize %> is open for rent  </h1>
+  <div class="row mt-3">
     <div class="col-12 col-lg-8">
       <% if @item.photos.attached? %>
       <div id="carouselExampleControls" class="carousel slide" data-ride="carousel">
@@ -33,19 +33,20 @@
     <div class="col-12 col-lg-4">
       <h2 class="text-xl-center mt-20"><%= @item.location %></p>
         <h3 class="text-xl-center mt-20"><%= @item.price %> € per Day</p>
-          <div class="mt-5"id="map"
-          style="width: 200px; height: 250px;"
+          <div class="show-map mt-5" id="map"
+          style="width: 350px; height: 250px;"
           data-markers="<%= @markers.to_json %>"
           data-mapbox-api-key="<%= ENV['MAPBOX_API_KEY'] %>"></div>
         </div>
       </div>
 
       <div class="row mt-5">
-        <div class="col-12 col-lg-6">
-          <p class="decription"><%= @item.description %></p>
+        <div class="d-flex align-items-start flex-column col-12 col-lg-6">
+          <p class="decription mb-auto"><%= @item.description %></p>
+          <p><%= link_to ' Back', items_path, class:"link-cool"%></p>
         </div>
         <div class="col-12 col-lg-6">
-          <div class="form-wrapper" style="width: 400px; margin: 0 auto;">
+          <div class="form-wrapper" style="width: 400px; margin: 0 auto; font-family: 'Montserrat', sans-serif;">
             <%= simple_form_for [@item, @booking], remote:true do |f| %>
             <%= f.input :date_start, as: :string, required: false, input_html: {class: "datepicker"} %>
             <%= f.input :date_end, as: :string, required: false, input_html: {class: "datepicker"} %>
@@ -71,8 +72,6 @@
       </div>
 
 
-      <p class="pb-2"><%= link_to 'Edit', edit_item_path, class:"link-cool"%></p>
-      <p><%= link_to ' Back', items_path, class:"link-cool"%></p>
     </div>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.5.1/gsap.min.js"></script>
