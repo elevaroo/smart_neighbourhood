@@ -1,7 +1,11 @@
 .banner {
   background-size: cover;
   background-position: center;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
   padding: 103px 10px;
+  height: 80vh;
 }
 
 .banner h1 {
@@ -9,7 +13,6 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
   font-size: 32px;
   font-weight: bold;
-  margin: 138px -56px;
   font-family: 'Montserrat', sans-serif;
 }
 
@@ -20,19 +23,13 @@
   text-shadow: 1px 1px 3px rgba(0,0,0,0.2);
 }
 
-
+.banner-title {
+  width: 400px;
+  margin-bottom: 30px;
+}
 .banner-content {
-  position: absolute;
-  z-index: 99999;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  width: 80%;
-  text-align: center;
-  font-size: 1.5em;
-  color: #fff;
-  line-height: 1.5;
-  padding-bottom: 100px;
-  font-family: 'Montserrat', sans-serif;
+  margin: 150px;
+  width: 800px;
 }
 
 .flexbox .banner {
@@ -41,7 +38,7 @@
 }
 
 #banner-typed-text {
-  font-size: 38px;
+  font-size: 32px;
 }
 
 .typed-text {

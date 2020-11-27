@@ -1,32 +1,27 @@
 .search-form-control {
-  position: relative;
   opacity: 0.6;
-}
-
-.search-form-control .btn {
-  position: absolute;
-}
-
-.search-form-control .form-control {
   height: 3.5rem;
   box-shadow: 0 2px 6px rgba(0,0,0,0.08);
   border: 1px solid #E7E7E7;
-  border-radius:18px;
-  margin-top:200px;
+  border-radius:50px;
+  padding-left: 10px;
+  width: 600px;
+  &:focus {
+      border:none;
+      outline:none;
+      background-color: white;
+    }
 }
 
-.search-form-control .form-control:focus {
-  border: 1px solid #1EDD88;
-  outline: none!important;
-  box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+.banner-search-form .wrapper {
+  border-radius: 50px;
+  display: flex;
+  justify-content: space-between;
+  width: 80%;
 }
 
 .search-btn{
   width: 115%;
-}
-
-#icon {
-  font-size: 38px;
 }
 
 .typed-cursor {
